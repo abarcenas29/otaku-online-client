@@ -90,9 +90,11 @@ module.exports = (options) => ({
     ]
   },
   node: { // This helped solved the fbgraph dll issue https://github.com/hapijs/joi/issues/665
+    cson: 'empty',
+    fs: 'empty',
+    hjson: 'empty',
     net: 'empty',
-    tls: 'empty',
-    fs: 'empty'
+    tls: 'empty'
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window

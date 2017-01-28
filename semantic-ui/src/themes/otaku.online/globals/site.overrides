@@ -1,0 +1,6 @@
+/*******************************
+        Global Overrides
+*******************************/
+html, body, #app, div[data-reactroot] {
+  height: 100%;
+}

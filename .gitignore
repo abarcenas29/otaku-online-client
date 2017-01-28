@@ -12,3 +12,6 @@ npm-debug.log
 #Semantic-UI
 semantic-ui/node_modules
 semantic-ui/dist
+
+#env
+.env
