@@ -39,8 +39,9 @@ export class Login extends React.PureComponent { // eslint-disable-line react/pr
   _generateFBUrl () {
     const authUrl = graph.getOauthUrl({
       client_id: FB_APP_ID,
-      redirect_uri: `${BASE_URL}`
+      redirect_uri: `${BASE_URL}/login/verify`
     })
+    console.log(authUrl)
     return authUrl
   }
 

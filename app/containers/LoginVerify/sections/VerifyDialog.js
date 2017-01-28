@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Button } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import css from 'styled-components'
 
 const GridStyle = css(Grid)`
@@ -12,9 +12,7 @@ const DialogColumn = css(Grid.Column)`
   padding: 1em;
 `
 
-function LoginDialog ({
-  fbUrl
-}) {
+function VerifyDialog () {
   return (
     <GridStyle centered stretched>
       <Grid.Row>
@@ -22,17 +20,13 @@ function LoginDialog ({
           textAlign='center'
           computer={4}
           tablet={8}
-          mobile={15}>
-          <h1>Facebook Login Test</h1>
-          <a href={fbUrl}>
-            <Button primary>
-              LOGIN
-            </Button>
-          </a>
+          mobile={15}
+        >
+          <h1>Verifying</h1>
         </DialogColumn>
       </Grid.Row>
     </GridStyle>
   )
 }
 
-export default LoginDialog
+export default VerifyDialog

@@ -51,6 +51,26 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/login/verify',
+      name: 'loginVerify',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/LoginVerify/reducer'),
+          import('containers/LoginVerify/sagas'),
+          import('containers/LoginVerify'),
+        ])
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('loginVerify', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      }
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
