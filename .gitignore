@@ -8,3 +8,7 @@ stats.json
 .DS_Store
 npm-debug.log
 .idea
+
+#Semantic-UI
+semantic-ui/node_modules
+semantic-ui/dist

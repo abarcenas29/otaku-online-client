@@ -6,10 +6,13 @@ The Front End side of the Otaku / Cosplay Marketplace project.
 
 * snazzy - `npm install -g snazzy`
 * standard - `npm install -g standard` - Replace eslint default
+* gulp - `npm install -g gulp`
 * jest - `npm install -g jest` - Replace the default unit testing run
 * semantic-ui-react - [semantic-ui](http://semantic-ui.com/introduction/getting-started.html)
 
 ## Technology Notes
+
+* fbgraph module build dll errors for webpack. [Issue Related](https://github.com/hapijs/joi/issues/665)
 
 ## Technology Used
 

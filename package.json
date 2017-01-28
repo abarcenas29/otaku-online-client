@@ -1,17 +1,17 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.4.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "otaku-online-frontend",
+  "version": "0.0.1",
+  "description": "A Otaku-centric online shopping front-end app.",
   "repository": {
     "type": "git",
     "url": "git://github.com/react-boilerplate/react-boilerplate.git"
   },
   "engines": {
-    "npm": ">=3",
-    "node": ">=5"
+    "npm": ">=7",
+    "node": ">=4"
   },
-  "author": "Max Stoiber",
-  "license": "MIT",
+  "author": "Aldrich Allen Barcenas",
+  "license": "ISC",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
@@ -214,6 +214,7 @@
     "compression": "1.6.2",
     "cross-env": "3.1.3",
     "express": "4.14.0",
+    "fbgraph": "1.4.1",
     "fontfaceobserver": "2.0.7",
     "immutable": "3.8.1",
     "intl": "1.2.5",
@@ -232,8 +233,10 @@
     "redux": "3.6.0",
     "redux-immutable": "3.0.8",
     "redux-saga": "0.14.0",
+    "request": "^2.79.0",
     "reselect": "2.5.4",
     "sanitize.css": "4.1.0",
+    "semantic-ui-react": "0.64.4",
     "styled-components": "1.1.2",
     "warning": "3.0.0",
     "whatwg-fetch": "2.0.1"
@@ -291,5 +294,28 @@
     "webpack": "2.2.0-rc.3",
     "webpack-dev-middleware": "1.9.0",
     "webpack-hot-middleware": "2.15.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "/internals/scripts",
+      "/app/routes.js",
+      "/semantic-ui"
+    ],
+    "globals": [
+      "FormData",
+      "Headers",
+      "Response",
+      "afterEach",
+      "before",
+      "beforeAll",
+      "beforeEach",
+      "describe",
+      "expect",
+      "fetch",
+      "it",
+      "jest",
+      "XMLHttpRequest"
+    ]
   }
 }
