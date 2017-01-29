@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Input } from 'semantic-ui-react'
+import { Grid, Input, Icon } from 'semantic-ui-react'
 import css from 'styled-components'
 
 const GridStyle = css(Grid)`
@@ -22,7 +22,7 @@ function VerifyDialog ({code}) {
           tablet={8}
           mobile={15}
         >
-          <h1>Verifying</h1>
+          <h1>VERIFYING USER <Icon name='spinner' loading /></h1>
           <Input value={code} />
         </DialogColumn>
       </Grid.Row>

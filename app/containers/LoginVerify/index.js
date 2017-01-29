@@ -7,6 +7,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+import { fromJS } from 'immutable'
 import qs from 'querystring'
 
 import css from 'styled-components'
@@ -26,14 +27,22 @@ export class LoginVerify extends React.PureComponent { // eslint-disable-line re
     super(props, context)
 
     this.state = {
-      code: ''
+      code: '',
+      form: fromJS({}),
+      showVerifyDialog: true,
+      showRegisterDialog: false
     }
 
     this._parseFbCode = this._parseFbCode.bind(this)
+    this.submitNewUser = this.submitNewUser.bind(this)
   }
 
   componentDidMount () {
     this._parseFbCode()
+  }
+
+  submitNewUser (values) {
+    console.log(values.toJS())
   }
 
   _parseFbCode () {
@@ -46,8 +55,14 @@ export class LoginVerify extends React.PureComponent { // eslint-disable-line re
   render () {
     return (
       <FullContainer>
-        {this.state.code.length < 0 && <VerifyDialog code={this.state.code} />}
-        <RegisterDialog />
+        {this.state.showVerifyDialog && <VerifyDialog code={this.state.code} />}
+        {
+          this.state.showRegisterDialog &&
+          <RegisterDialog
+            initialValues={this.state.form}
+            submitNewUser={this.submitNewUser}
+          />
+        }
       </FullContainer>
     )
   }
