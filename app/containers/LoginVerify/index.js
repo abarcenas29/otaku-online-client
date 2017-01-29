@@ -75,7 +75,6 @@ export class LoginVerify extends React.PureComponent { // eslint-disable-line re
       console.log(data)
     })
     .catch(e => {
-      console.log('this should execute')
       this.setState({errorVerifyMsg: e.message})
       this.setState({errorVerifyDialog: true})
     })

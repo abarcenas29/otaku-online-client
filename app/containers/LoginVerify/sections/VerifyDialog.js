@@ -16,7 +16,6 @@ function VerifyDialog ({
   errorDialogCheck,
   errorVerifyMsg
 }) {
-  console.log(errorDialogCheck)
   return (
     <GridStyle centered stretched>
       <Grid.Row>
