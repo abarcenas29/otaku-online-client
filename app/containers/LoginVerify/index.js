@@ -12,8 +12,20 @@ import qs from 'querystring'
 
 import css from 'styled-components'
 
+// Constants
+import {
+  BASE_URL
+} from './../../constants'
+
+// Sections
 import VerifyDialog from './sections/VerifyDialog'
 import RegisterDialog from './sections/RegisterDialog'
+
+// Actions
+import {
+  passFBCodeAction,
+  createUserAction
+} from './actions'
 
 const FullContainer = css.div`
   height: 100%;
@@ -30,15 +42,43 @@ export class LoginVerify extends React.PureComponent { // eslint-disable-line re
       code: '',
       form: fromJS({}),
       showVerifyDialog: true,
+      errorVerifyDialog: false,
+      errorVerifyMsg: '',
       showRegisterDialog: false
     }
 
     this._parseFbCode = this._parseFbCode.bind(this)
     this.submitNewUser = this.submitNewUser.bind(this)
+    this.submitFbCode = this.submitFbCode.bind(this)
   }
 
   componentDidMount () {
-    this._parseFbCode()
+    return new Promise((resolve, reject) => {
+      resolve(this._parseFbCode())
+    })
+    .then(() => {
+      this.submitFbCode()
+    })
+  }
+
+  submitFbCode () {
+    return new Promise((resolve, reject) => {
+      const payload = {
+        resolve,
+        reject,
+        code: this.state.code,
+        redirect_uri: `${BASE_URL}/login/verify`
+      }
+      this.props.passFBCode(payload)
+    })
+    .then(data => {
+      console.log(data)
+    })
+    .catch(e => {
+      console.log('this should execute')
+      this.setState({errorVerifyMsg: e.message})
+      this.setState({errorVerifyDialog: true})
+    })
   }
 
   submitNewUser (values) {
@@ -55,7 +95,13 @@ export class LoginVerify extends React.PureComponent { // eslint-disable-line re
   render () {
     return (
       <FullContainer>
-        {this.state.showVerifyDialog && <VerifyDialog code={this.state.code} />}
+        {
+          this.state.showVerifyDialog &&
+          <VerifyDialog
+            errorDialogCheck={this.state.errorVerifyDialog}
+            errorVerifyMsg={this.state.errorVerifyMsg}
+          />
+        }
         {
           this.state.showRegisterDialog &&
           <RegisterDialog
@@ -72,6 +118,8 @@ const mapStateToProps = createStructuredSelector({})
 
 function mapDispatchToProps (dispatch) {
   return {
+    passFBCode: payload => dispatch(passFBCodeAction(payload)),
+    createUser: payload => dispatch(createUserAction(payload)),
     dispatch
   }
 }

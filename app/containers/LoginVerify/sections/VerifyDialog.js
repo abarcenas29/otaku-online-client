@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Input, Icon } from 'semantic-ui-react'
+import { Grid, Message, Icon } from 'semantic-ui-react'
 import css from 'styled-components'
 
 const GridStyle = css(Grid)`
@@ -12,7 +12,11 @@ const DialogColumn = css(Grid.Column)`
   padding: 1em;
 `
 
-function VerifyDialog ({code}) {
+function VerifyDialog ({
+  errorDialogCheck,
+  errorVerifyMsg
+}) {
+  console.log(errorDialogCheck)
   return (
     <GridStyle centered stretched>
       <Grid.Row>
@@ -22,8 +26,11 @@ function VerifyDialog ({code}) {
           tablet={8}
           mobile={15}
         >
-          <h1>VERIFYING USER <Icon name='spinner' loading /></h1>
-          <Input value={code} />
+          <h1>VERIFYING USER { !errorDialogCheck && <Icon name='spinner' loading /> }</h1>
+          <Message negative hidden={!errorDialogCheck}>
+            <Message.Header>Oops...</Message.Header>
+            <p>{errorVerifyMsg}</p>
+          </Message>
         </DialogColumn>
       </Grid.Row>
     </GridStyle>
