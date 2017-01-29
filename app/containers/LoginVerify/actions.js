@@ -1,15 +1,24 @@
 /*
  *
- * LoginVeirfy actions
+ * Login Veirfy actions
  *
  */
 
 import {
-  DEFAULT_ACTION,
-} from './constants';
+  PASS_FB_CODE,
+  CREATE_USER
+} from './constants'
 
-export function defaultAction() {
+export function passFBCodeAction (payload) {
   return {
-    type: DEFAULT_ACTION,
-  };
+    type: PASS_FB_CODE,
+    payload
+  }
+}
+
+export function createUserAction (payload) {
+  return {
+    type: CREATE_USER,
+    payload
+  }
 }

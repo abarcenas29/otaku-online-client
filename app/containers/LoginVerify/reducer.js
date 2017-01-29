@@ -4,20 +4,21 @@
  *
  */
 
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
+/*
 import {
-  DEFAULT_ACTION,
-} from './constants';
+  PASS_FB_CODE,
+  CREATE_USER
+} from './constants'
+*/
 
-const initialState = fromJS({});
+const initialState = fromJS({})
 
-function loginVeirfyReducer(state = initialState, action) {
+function loginVeirfyReducer (state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
     default:
-      return state;
+      return state
   }
 }
 
-export default loginVeirfyReducer;
+export default loginVeirfyReducer

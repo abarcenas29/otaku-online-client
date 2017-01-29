@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Input } from 'semantic-ui-react'
+import { Grid, Form, Button } from 'semantic-ui-react'
 import css from 'styled-components'
 
 const GridStyle = css(Grid)`
@@ -12,22 +12,29 @@ const DialogColumn = css(Grid.Column)`
   padding: 1em;
 `
 
-function VerifyDialog ({code}) {
+function RegisterDialog () {
   return (
     <GridStyle centered stretched>
       <Grid.Row>
         <DialogColumn
-          textAlign='center'
           computer={4}
           tablet={8}
           mobile={15}
         >
-          <h1>Verifying</h1>
-          <Input value={code} />
+          <h1>Register New User</h1>
+          <Form>
+            <Form.Input label='Facebook ID' />
+            <Form.Input label='Name' />
+            <Form.Input label='Email' />
+            <Form.Input label='Mobile No' />
+            <Button type='submit' primary>
+              REGISTER
+            </Button>
+          </Form>
         </DialogColumn>
       </Grid.Row>
     </GridStyle>
   )
 }
 
-export default VerifyDialog
+export default RegisterDialog
