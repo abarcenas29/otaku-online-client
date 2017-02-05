@@ -8,6 +8,7 @@ stats.json
 # Cruft
 .DS_Store
 npm-debug.log
+debug.log
 .idea
 
 #Semantic-UI
