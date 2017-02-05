@@ -319,7 +319,8 @@
       "fetch",
       "it",
       "jest",
-      "location"
+      "location",
+      "atob"
     ]
   }
 }

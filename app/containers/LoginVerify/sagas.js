@@ -22,7 +22,8 @@ export function* VerifyFbCode (data) {
   const req = yield call(request, url, {
     method: 'POST',
     headers,
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
+    crossDomain: true
   })
 
   if (!req.err) {
@@ -45,10 +46,11 @@ export function* RegisterUser (data) {
   const url = `${API_URL}/users`
   const req = yield call(request, url, {
     method: 'POST',
+    headers,
     body: JSON.stringify(fields)
   })
 
-  if (req.err) {
+  if (!req.err) {
     resolve(req)
   } else {
     reject(reject)
@@ -72,7 +74,7 @@ export function* LoginVerifySagas () {
   ]
 
   yield take(LOCATION_CHANGE)
-  yield watchers.map(task => cancel(task))
+  if (watchers) yield watchers.map(task => cancel(task))
 }
 
 // All sagas to be loaded

@@ -35,6 +35,7 @@ function RegisterDialog ({
             <Field
               name='fbid'
               component={InputField}
+              readOnly
               label='Facebook ID'
             />
             <Field

@@ -8,6 +8,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { fromJS } from 'immutable'
+import { push } from 'react-router-redux'
 import qs from 'querystring'
 
 import css from 'styled-components'
@@ -44,7 +45,8 @@ export class LoginVerify extends React.PureComponent { // eslint-disable-line re
       showVerifyDialog: true,
       errorVerifyDialog: false,
       errorVerifyMsg: '',
-      showRegisterDialog: false
+      showRegisterDialog: false,
+      registerToken: ''
     }
 
     this._parseFbCode = this._parseFbCode.bind(this)
@@ -71,8 +73,25 @@ export class LoginVerify extends React.PureComponent { // eslint-disable-line re
       }
       this.props.passFBCode(payload)
     })
-    .then(data => {
-      console.log(data)
+    .then(({data: { response: { token } }}) => {
+      // get the detail from the token
+      const JWTContent = JSON.parse(atob(token.split('.')[1]))
+
+      this.setState({registerToken: token})
+      if (JWTContent.user === 'new') {
+        this.setState({showRegisterDialog: true})
+        this.setState({showVerifyDialog: false})
+        const userDetails = {
+          fbid: JWTContent.id,
+          email: JWTContent.email,
+          name: JWTContent.name
+        }
+
+        this.setState({form: fromJS(userDetails)})
+      } else {
+        // since the user exist pass the json token
+        window.localStorage.setItem('token', token)
+      }
     })
     .catch(e => {
       this.setState({errorVerifyMsg: e.message})
@@ -81,7 +100,16 @@ export class LoginVerify extends React.PureComponent { // eslint-disable-line re
   }
 
   submitNewUser (values) {
-    console.log(values.toJS())
+    return new Promise((resolve, reject) => {
+      // pass the detail token
+      const token = this.state.registerToken
+      const { mobile_no } = values.toJS()
+      const payload = { resolve, reject, token, mobile_no }
+      this.props.createUser(payload)
+    })
+    .then(data => {
+      this.props.redirect('/login')
+    })
   }
 
   _parseFbCode () {
@@ -119,6 +147,7 @@ function mapDispatchToProps (dispatch) {
   return {
     passFBCode: payload => dispatch(passFBCodeAction(payload)),
     createUser: payload => dispatch(createUserAction(payload)),
+    redirect: (payload) => dispatch(push(payload)),
     dispatch
   }
 }
