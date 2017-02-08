@@ -69,14 +69,17 @@ function Dashboard ({menus}) {
           </Menu.Menu>
           <Menu.Menu position='right'>
             <Menu.Item className='hide-on-mobile'>
-              <Button size='huge' primary>Sell Items</Button>
+              <Button size='huge' primary>
+                <Icon name='money' />
+                Sell Items
+              </Button>
             </Menu.Item>
             <Menu.Item className='hide-on-pc' link>
               <Icon name='money' size='large' color='blue' />
             </Menu.Item>
             <Menu.Item className='hide-on-mobile'>
               <Button size='huge' color='orange'>
-                <Icon name='search' />
+                <Icon name='tag' />
                 Browse
               </Button>
             </Menu.Item>
@@ -134,7 +137,7 @@ function Dashboard ({menus}) {
             <Menu.Item>
               <MobileCenter>
                 <Button size='huge' color='orange'>
-                  <Icon name='search' />
+                  <Icon name='tag' />
                   Browse
                 </Button>
               </MobileCenter>
