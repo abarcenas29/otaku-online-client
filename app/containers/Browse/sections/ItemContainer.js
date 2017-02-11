@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Button } from 'semantic-ui-react'
 
-import ItemBlock from './ItemBlock'
+import ItemBlock from 'components/ItemBlock'
 
 function ItemContainer () {
   return (

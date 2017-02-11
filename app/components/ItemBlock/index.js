@@ -1,3 +1,9 @@
+/**
+*
+* ItemBlock
+*
+*/
+
 import React from 'react'
 import { Card, Image, Icon, Grid, Label } from 'semantic-ui-react'
 import css from 'styled-components'
