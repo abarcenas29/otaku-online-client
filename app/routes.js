@@ -111,6 +111,26 @@ export default function createRoutes (store) {
 
             importModules.catch(errorLoading)
           }
+        }, {
+          path: '/item/:slug',
+          name: 'item',
+          getComponent (nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Item/reducer'),
+              import('containers/Item/sagas'),
+              import('containers/Item')
+            ])
+
+            const renderRoute = loadModule(cb)
+
+            importModules.then(([reducer, sagas, component]) => {
+              injectReducer('item', reducer.default)
+              injectSagas(sagas.default)
+              renderRoute(component)
+            })
+
+            importModules.catch(errorLoading)
+          }
         }
       ] // end of dashboard
     }, {

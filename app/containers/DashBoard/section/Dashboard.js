@@ -1,7 +1,9 @@
 import React from 'react'
 import css from 'styled-components'
 
-import { Menu, Input, Dropdown, Button, Image, Icon, Header } from 'semantic-ui-react'
+import { Menu, Input, Button, Image, Icon, Grid } from 'semantic-ui-react'
+
+import AvatarBox from 'components/AvatarBox'
 
 const DashBoardSkeleton = css.div`
   height: inherit;
@@ -42,16 +44,6 @@ const MobileCenter = css.div`
   justify-content: center;
 `
 
-const AvatarBox = css.div`
-  display: flex;
-`
-const AvatarControls = css.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding-left: 1em;
-`
-
 const MobileSearchContainer = css.div`
   display: flex;
   justify-content: center;
@@ -68,6 +60,10 @@ const Content = css.div`
   flex-grow: 1;
   overflow-y: auto;
   width: 100;
+`
+
+const MainFooter = css.div`
+
 `
 
 function Dashboard ({menus, showMobileMenu, toggleMobileMenu, children}) {
@@ -97,12 +93,6 @@ function Dashboard ({menus, showMobileMenu, toggleMobileMenu, children}) {
               <Icon name='money' size='large' color='blue' />
             </Menu.Item>
             <Menu.Item className='hide-on-mobile'>
-              <Button size='huge' color='orange'>
-                <Icon name='tag' />
-                Browse
-              </Button>
-            </Menu.Item>
-            <Menu.Item className='hide-on-mobile'>
               <Button color='facebook' size='huge'>
                 <Icon name='facebook square' />
                 Participate
@@ -124,16 +114,7 @@ function Dashboard ({menus, showMobileMenu, toggleMobileMenu, children}) {
           <MobileMenuContainer className='hide-on-pc'>
             <MobileMenu vertical fluid borderless>
               <Menu.Item link>
-                <AvatarBox>
-                  <Image src='http://placehold.it/100x100' shape='circular' />
-                  <AvatarControls>
-                    <Header as='h2'>
-                      Username
-                      <Header.Subheader>Role</Header.Subheader>
-                    </Header>
-                    <a>Logout</a>
-                  </AvatarControls>
-                </AvatarBox>
+                <AvatarBox />
               </Menu.Item>
               <Menu.Item>
                 <MobileCenter>
@@ -167,6 +148,17 @@ function Dashboard ({menus, showMobileMenu, toggleMobileMenu, children}) {
       <Content>
         {children}
       </Content>
+
+      <MainFooter>
+        <Grid centered padded>
+          <Grid.Row>
+            <Grid.Column computer={14}>
+              <p>Footer</p>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </MainFooter>
+
     </DashBoardSkeleton>
   )
 }

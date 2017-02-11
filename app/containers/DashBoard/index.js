@@ -53,12 +53,6 @@ export class DashBoard extends React.PureComponent { // eslint-disable-line reac
       <Container>
         <Helmet
           title='DashBoard'
-          meta={[
-            { name: 'description', content: 'Description of DashBoard' }
-          ]}
-          link={[
-            {rel: 'stylesheet', type: 'text/css', href: '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'}
-          ]}
         />
         <Dashboard
           menus={this.state.menu}

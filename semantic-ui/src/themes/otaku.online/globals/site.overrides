@@ -3,6 +3,7 @@
 *******************************/
 html, body, #app, div[data-reactroot] {
   height: 100%;
+  background-color: #F7F7F7;
 }
 
 @media only screen and (max-width: 1919px) and (min-width: 1200px) {
