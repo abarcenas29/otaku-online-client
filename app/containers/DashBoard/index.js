@@ -37,8 +37,15 @@ export class DashBoard extends React.PureComponent { // eslint-disable-line reac
           label: 'Menu 2',
           to: '#'
         }
-      ]
+      ],
+      showMobileMenu: false
     }
+
+    this.toggleMobileMenu = this.toggleMobileMenu.bind(this)
+  }
+
+  toggleMobileMenu () {
+    this.setState({showMobileMenu: !this.state.showMobileMenu})
   }
 
   render () {
@@ -53,7 +60,13 @@ export class DashBoard extends React.PureComponent { // eslint-disable-line reac
             {rel: 'stylesheet', type: 'text/css', href: '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'}
           ]}
         />
-        <Dashboard menus={this.state.menu} />
+        <Dashboard
+          menus={this.state.menu}
+          showMobileMenu={this.state.showMobileMenu}
+          toggleMobileMenu={this.toggleMobileMenu}
+        >
+          {React.Children.toArray(this.props.children)}
+        </Dashboard>
       </Container>
     )
   }

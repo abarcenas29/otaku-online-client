@@ -89,7 +89,30 @@ export default function createRoutes (store) {
         })
 
         importModules.catch(errorLoading)
-      }
+      },
+      childRoutes: [
+        {
+          path: '/browse',
+          name: 'browse',
+          getComponent (nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Browse/reducer'),
+              import('containers/Browse/sagas'),
+              import('containers/Browse')
+            ])
+
+            const renderRoute = loadModule(cb)
+
+            importModules.then(([reducer, sagas, component]) => {
+              injectReducer('browse', reducer.default)
+              injectSagas(sagas.default)
+              renderRoute(component)
+            })
+
+            importModules.catch(errorLoading)
+          }
+        }
+      ] // end of dashboard
     }, {
       path: '*',
       name: 'notfound',
