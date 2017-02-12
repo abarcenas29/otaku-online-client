@@ -56,7 +56,7 @@ function ItemContainer () {
                   src='http://placehold.it/800x600'
                 />
                 <ImageGalleryContainer>
-                  <Image.Group size='tiny' rounded>
+                  <Image.Group size='tiny'>
                     <Image src='http://placehold.it/200x200' />
                     <Image src='http://placehold.it/200x200' />
                     <Image src='http://placehold.it/200x200' />
@@ -103,10 +103,10 @@ function ItemContainer () {
                         Other Items This Seller Is Selling
                       </HeaderStyle>
                     </Grid.Column>
-                    <ItemBlock />
-                    <ItemBlock />
-                    <ItemBlock />
-                    <ItemBlock />
+                    <ItemBlock link='/item/asasd' />
+                    <ItemBlock link='/item/asasd' />
+                    <ItemBlock link='/item/asasd' />
+                    <ItemBlock link='/item/asasd' />
                   </Grid.Row>
                 </Grid>
 

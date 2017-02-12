@@ -4,16 +4,14 @@
  *
  */
 
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import Helmet from 'react-helmet'
 import { createStructuredSelector } from 'reselect'
 import css from 'styled-components'
 
 import Dashboard from './section/Dashboard'
-
-// css attempt
-import './menuStyle.js'
 
 const Container = css.div`
   height: inherit;
@@ -23,25 +21,17 @@ export class DashBoard extends React.PureComponent { // eslint-disable-line reac
   constructor (props, context) {
     super(props, context)
     this.state = {
-      menu: [
-        {
-          label: 'Manage',
-          content: [
-            {
-              label: 'Users',
-              to: '#'
-            }
-          ]
-        },
-        {
-          label: 'Menu 2',
-          to: '#'
-        }
-      ],
       showMobileMenu: false
     }
 
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this)
+    this.redirectToSellItem = this.redirectToSellItem.bind(this)
+  }
+
+  redirectToSellItem () {
+    // check if the user has a mobile phone.
+    // prompt that before proceeding
+    this.props.redirect('/manage/item/add')
   }
 
   toggleMobileMenu () {
@@ -58,6 +48,7 @@ export class DashBoard extends React.PureComponent { // eslint-disable-line reac
           menus={this.state.menu}
           showMobileMenu={this.state.showMobileMenu}
           toggleMobileMenu={this.toggleMobileMenu}
+          redirectToSellItem={this.redirectToSellItem}
         >
           {React.Children.toArray(this.props.children)}
         </Dashboard>
@@ -66,14 +57,11 @@ export class DashBoard extends React.PureComponent { // eslint-disable-line reac
   }
 }
 
-DashBoard.propTypes = {
-  dispatch: PropTypes.func.isRequired
-}
-
 const mapStateToProps = createStructuredSelector({})
 
 function mapDispatchToProps (dispatch) {
   return {
+    redirect: url => dispatch(push(url)),
     dispatch
   }
 }

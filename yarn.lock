@@ -250,6 +250,10 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
+attr-accept@^1.0.3:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/attr-accept/-/attr-accept-1.1.0.tgz#b5cd35227f163935a8f1de10ed3eba16941f6be6"
+
 autoprefixer@^6.3.1:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.5.4.tgz#1386eb6708ccff36aefff70adc694ecfd60af1b0"
@@ -1510,7 +1514,7 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-classnames@^2.1.5, classnames@^2.2.5:
+classnames@^2.1.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -6095,10 +6099,6 @@ qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
 
-query-string@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-1.0.1.tgz#63ac953352499ad670a9681a75680f6bf3dd1faf"
-
 query-string@^4.1.0, query-string@^4.2.2:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.2.3.tgz#9f27273d207a25a8ee4c7b8c74dcd45d556db822"
@@ -6171,6 +6171,12 @@ react-dom@15.4.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
+react-dropzone@3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-3.10.0.tgz#d17193f816c038a1c29f1e92411db4a12210f19b"
+  dependencies:
+    attr-accept "^1.0.3"
+
 react-helmet@3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-3.2.2.tgz#1fc4646cbc5d26246ab45d5a84b504ed639810e6"
@@ -6189,21 +6195,6 @@ react-intl@2.1.5:
     intl-messageformat "^1.3.0"
     intl-relativeformat "^1.3.0"
     invariant "^2.1.1"
-
-react-metismenu-router-link@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-metismenu-router-link/-/react-metismenu-router-link-1.0.0.tgz#ab756bf33246c77909484aa2d1a3bc9ab93b5bd8"
-  dependencies:
-    classnames "^2.2.5"
-
-react-metismenu@1.3.0-alpha.1:
-  version "1.3.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/react-metismenu/-/react-metismenu-1.3.0-alpha.1.tgz#a18207278fad8bf66c1ee36a69e0a7719fdef1ab"
-  dependencies:
-    classnames "^2.2.5"
-    react-redux "^4.4.5"
-    redux "^3.6.0"
-    simple-ajax "^2.6.0"
 
 react-motion-ui-pack@0.10.2:
   version "0.10.2"
@@ -6226,7 +6217,7 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-redux@4.4.6, react-redux@^4.4.5:
+react-redux@4.4.6:
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-4.4.6.tgz#4b9d32985307a11096a2dd61561980044fcc6209"
   dependencies:
@@ -6444,7 +6435,7 @@ redux-saga@0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.14.0.tgz#7792bcc9dc57e9ed2484daa95794b154ee472b24"
 
-redux@3.6.0, redux@^3.6.0:
+redux@3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.6.0.tgz#887c2b3d0b9bd86eca2be70571c27654c19e188d"
   dependencies:
@@ -6822,12 +6813,6 @@ shellwords@^0.1.0:
 signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
-
-simple-ajax@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/simple-ajax/-/simple-ajax-2.6.0.tgz#02949d61b5d9aaa93829d7e5c0f0a6327929e144"
-  dependencies:
-    query-string "^1.0.0"
 
 sinon@2.0.0-pre:
   version "2.0.0-pre"

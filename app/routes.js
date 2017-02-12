@@ -131,6 +131,89 @@ export default function createRoutes (store) {
 
             importModules.catch(errorLoading)
           }
+        }, {
+          path: '/manage',
+          name: 'manage',
+          getComponent (nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Manage/reducer'),
+              import('containers/Manage/sagas'),
+              import('containers/Manage')
+            ])
+
+            const renderRoute = loadModule(cb)
+
+            importModules.then(([reducer, sagas, component]) => {
+              injectReducer('manage', reducer.default)
+              injectSagas(sagas.default)
+              renderRoute(component)
+            })
+
+            importModules.catch(errorLoading)
+          },
+          childRoutes: [
+            {
+              path: '/manage/items',
+              name: 'Manage Item',
+              getComponent (nextState, cb) {
+                const importModules = Promise.all([
+                  import('containers/ManageItems/reducer'),
+                  import('containers/ManageItems/sagas'),
+                  import('containers/ManageItems')
+                ])
+
+                const renderRoute = loadModule(cb)
+
+                importModules.then(([reducer, sagas, component]) => {
+                  injectReducer('ManageItems', reducer.default)
+                  injectSagas(sagas.default)
+                  renderRoute(component)
+                })
+
+                importModules.catch(errorLoading)
+              }
+            }, {
+              path: '/manage/item/add',
+              name: 'Add Item',
+              getComponent (nextState, cb) {
+                const importModules = Promise.all([
+                  import('containers/ManageItemSell/reducer'),
+                  import('containers/ManageItemSell/sagas'),
+                  import('containers/ManageItemSell')
+                ])
+
+                const renderRoute = loadModule(cb)
+
+                importModules.then(([reducer, sagas, component]) => {
+                  injectReducer('manageItemSell', reducer.default)
+                  injectSagas(sagas.default)
+                  renderRoute(component)
+                })
+
+                importModules.catch(errorLoading)
+              }
+            }, {
+              path: '/manage/item/edit/:id',
+              name: 'Edit Item',
+              getComponent (nextState, cb) {
+                const importModules = Promise.all([
+                  import('containers/ManageItemSell/reducer'),
+                  import('containers/ManageItemSell/sagas'),
+                  import('containers/ManageItemSell')
+                ])
+
+                const renderRoute = loadModule(cb)
+
+                importModules.then(([reducer, sagas, component]) => {
+                  injectReducer('manageItemSell', reducer.default)
+                  injectSagas(sagas.default)
+                  renderRoute(component)
+                })
+
+                importModules.catch(errorLoading)
+              }
+            }
+          ]
         }
       ] // end of dashboard
     }, {

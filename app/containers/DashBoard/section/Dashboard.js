@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import css from 'styled-components'
 
 import { Menu, Input, Button, Image, Icon, Grid } from 'semantic-ui-react'
@@ -55,25 +56,39 @@ const MobileSearchContainer = css.div`
   min-height: 5em;
 `
 
-const Content = css.div`
-  display: block;
+const ContentContainer = css.div`
+  display: flex;
   flex-grow: 1;
   overflow-y: auto;
-  width: 100;
+  width: 100%;
+  flex-direction: column;
+`
+
+const Content = css.div`
+  flex-grow: 1;
+  display: block;
 `
 
 const MainFooter = css.div`
 
 `
 
-function Dashboard ({menus, showMobileMenu, toggleMobileMenu, children}) {
+function Dashboard ({
+  children,
+  menus,
+  redirectToSellItem,
+  showMobileMenu,
+  toggleMobileMenu
+}) {
   return (
     <DashBoardSkeleton>
       <NavBar>
         <MainMenu borderless>
           <Menu.Menu>
             <Menu.Item link>
-              <BannerImage src='http://placehold.it/100x100' />
+              <Link to='/browse'>
+                <BannerImage src='http://placehold.it/100x100' />
+              </Link>
             </Menu.Item>
             <Menu.Item className='hide-on-mobile'>
               <Input
@@ -84,7 +99,7 @@ function Dashboard ({menus, showMobileMenu, toggleMobileMenu, children}) {
           </Menu.Menu>
           <Menu.Menu position='right'>
             <Menu.Item className='hide-on-mobile'>
-              <Button size='huge' primary>
+              <Button size='large' primary onClick={redirectToSellItem}>
                 <Icon name='money' />
                 Sell Items
               </Button>
@@ -145,20 +160,18 @@ function Dashboard ({menus, showMobileMenu, toggleMobileMenu, children}) {
           labelPosition='right'
         />
       </MobileSearchContainer>
-      <Content>
-        {children}
-      </Content>
-
-      <MainFooter>
-        <Grid centered padded>
-          <Grid.Row>
-            <Grid.Column computer={14}>
-              <p>Footer</p>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </MainFooter>
-
+      <ContentContainer>
+        <Content>{children}</Content>
+        <MainFooter>
+          <Grid centered padded>
+            <Grid.Row>
+              <Grid.Column computer={14}>
+                <p>Footer</p>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </MainFooter>
+      </ContentContainer>
     </DashBoardSkeleton>
   )
 }

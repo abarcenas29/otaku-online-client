@@ -18,16 +18,7 @@ function ItemContainer () {
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <ItemBlock />
-        <ItemBlock />
-        <ItemBlock />
-        <ItemBlock />
-        <ItemBlock />
-        <ItemBlock />
-        <ItemBlock />
-        <ItemBlock />
-        <ItemBlock />
-        <ItemBlock />
+        <ItemBlock link='/item/asd' />
       </Grid.Row>
     </Grid>
   )

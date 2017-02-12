@@ -32,7 +32,9 @@ module.exports = (options) => {
         loader: 'url-loader?limit=10000&mimetype=application/font-woff'
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        // solved the decoding issue here.
+        // https://github.com/webpack/webpack/issues/1468#issuecomment-142781775
+        test: /\.(eot|svg|ttf|woff|woff2\?\S*)$/,
         loader: 'file-loader'
       }, {
         test: /\.(jpg|png|gif)$/,

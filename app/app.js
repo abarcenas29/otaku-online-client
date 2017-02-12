@@ -15,6 +15,7 @@ import { Provider } from 'react-redux'
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { useScroll } from 'react-router-scroll'
+import FontFaceObserver from 'fontfaceobserver'
 import 'sanitize.css/sanitize.css'
 
 // Import root app
@@ -41,6 +42,15 @@ import { translationMessages } from './i18n'
 // Import CSS reset and Global Styles
 // import './global-styles';
 import '../semantic-ui/dist/semantic.css'
+
+const LatoFontObserver = new FontFaceObserver('Lato', {})
+LatoFontObserver.load().then(() => {
+  document.body.classList.add('fontLoaded')
+},
+() => {
+  document.body.classList.remove('fontLoaded')
+}
+)
 
 // Import root routes
 import createRoutes from './routes'
