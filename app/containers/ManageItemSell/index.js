@@ -14,6 +14,7 @@ import { createStructuredSelector } from 'reselect'
 import makeSelectManageItemSell from './selectors'
 
 import SellItemForm from './sections/SellItemFrom'
+import AddAnimeModal from './sections/AddAnimeModal'
 
 export class ManageItemSell extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor (props, context) {
@@ -34,6 +35,7 @@ export class ManageItemSell extends React.PureComponent { // eslint-disable-line
           ]}
         />
         <SellItemForm initialValues={this.state.form} />
+        <AddAnimeModal />
       </div>
     )
   }

@@ -13,10 +13,18 @@ import {
   TextArea
 } from 'semantic-ui-react'
 
+import AnimePosterAdd from 'components/AnimeBox/AnimePosterAdd'
+import AnimePoster from 'components/AnimeBox/AnimePoster'
+
 import { reduxForm, Field } from 'redux-form/immutable'
 
 const FormArea = css(Grid.Row)`
   background-color: #FFF;
+`
+
+const AnimePosterContainer = css.div`
+  display: flex;
+  flex-wrap: wrap;
 `
 
 function SellItemFrom () {
@@ -157,6 +165,14 @@ function SellItemFrom () {
             <Form.Field>
               <label>Description</label>
               <TextArea autoHeight />
+            </Form.Field>
+
+            <Form.Field>
+              <label>Anime Inspiration</label>
+              <AnimePosterContainer>
+                <AnimePoster />
+                <AnimePosterAdd />
+              </AnimePosterContainer>
             </Form.Field>
 
           </Form>

@@ -1,3 +1,10 @@
 /*******************************
          Theme Overrides
 *******************************/
+.ui.modal {
+  height: auto;
+}
+
+.ui.modal > .header:not(.ui) {
+  border-bottom: 1px solid orange;
+}
