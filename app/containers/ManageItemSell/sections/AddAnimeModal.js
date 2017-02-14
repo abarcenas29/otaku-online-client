@@ -31,30 +31,20 @@ function AddAnimeModal () {
         <div><Input fluid size='big' /></div>
         <br />
         <AnimeList>
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
-          <AnimePoster />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
+          <AnimePoster closeFunc={() => {}} />
         </AnimeList>
       </Container>
     </StandardModal>

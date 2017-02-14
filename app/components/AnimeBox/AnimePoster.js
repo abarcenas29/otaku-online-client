@@ -9,6 +9,10 @@ const AnimePosterStyle = css.button`
   width: 20%;
   margin-bottom: 1em;
   position: relative;
+
+  @media only screen and (max-width: 767px) and (min-width: 320px) {
+    width: 85%;
+  }
 `
 
 const CloseIconContainer = css.div`
@@ -19,16 +23,20 @@ const CloseIconContainer = css.div`
   z-index: 100;
 `
 
-function AnimePoster () {
+function AnimePoster ({closeFunc}) {
   return (
     <AnimePosterStyle>
-      <CloseIconContainer>
-        <Button
-          icon='close'
-          size='tiny'
-          negative
-        />
-      </CloseIconContainer>
+      {
+        closeFunc &&
+        <CloseIconContainer>
+          <Button
+            icon='close'
+            size='tiny'
+            negative
+            onClick={closeFunc}
+          />
+        </CloseIconContainer>
+      }
       <Image
         src='https://cdn.anilist.co/img/dir/anime/reg/11757.jpg'
       />
