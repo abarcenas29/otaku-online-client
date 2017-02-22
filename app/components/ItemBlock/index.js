@@ -22,7 +22,7 @@ const LabelStyle = css(Label)`
 
 function ItemBlock ({link}) {
   return (
-    <ColumnStyles computer={4} mobile={16}>
+    <ColumnStyles computer={4} tablet={8} mobile={16}>
       <Link to={link}>
         <Card>
           <ImageStyle src='http://semantic-ui.com/images/avatar2/large/matthew.png' />

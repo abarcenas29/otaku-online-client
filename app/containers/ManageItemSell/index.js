@@ -13,7 +13,7 @@ import { fromJS } from 'immutable'
 import { createStructuredSelector } from 'reselect'
 import makeSelectManageItemSell from './selectors'
 
-import SellItemForm from './sections/SellItemFrom'
+import SellItemForm from './sections/SellItemForm'
 import AddAnimeModal from './sections/AddAnimeModal'
 
 export class ManageItemSell extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -23,6 +23,12 @@ export class ManageItemSell extends React.PureComponent { // eslint-disable-line
     this.state = {
       form: fromJS({})
     }
+
+    this.submitItem = this.submitItem.bind(this)
+  }
+
+  submitItem (values) {
+    console.log('values', values.toJS())
   }
 
   render () {
@@ -34,7 +40,10 @@ export class ManageItemSell extends React.PureComponent { // eslint-disable-line
             { name: 'description', content: 'Description of ManageItemSell' }
           ]}
         />
-        <SellItemForm initialValues={this.state.form} />
+        <SellItemForm
+          initialValues={this.state.form}
+          submitItem={this.submitItem}
+        />
         <AddAnimeModal />
       </div>
     )

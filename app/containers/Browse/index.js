@@ -33,13 +33,13 @@ export class Browse extends React.PureComponent { // eslint-disable-line react/p
     return (
       <Grid padded>
         <Grid.Row>
-          <Grid.Column mobile={16} computer={4}>
+          <Grid.Column mobile={16} tablet={5} computer={4}>
             <FilterBox
               filterBoxToggle={this.state.filterBoxToggle}
               toggleFilterBox={this.toggleFilterBox}
             />
           </Grid.Column>
-          <Grid.Column mobile={16} computer={12}>
+          <Grid.Column mobile={16} tablet={11} computer={12}>
             <ItemContainer />
           </Grid.Column>
         </Grid.Row>

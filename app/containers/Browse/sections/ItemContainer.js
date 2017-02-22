@@ -19,6 +19,7 @@ function ItemContainer () {
       </Grid.Row>
       <Grid.Row>
         <ItemBlock link='/item/asd' />
+        <ItemBlock link='/item/asd' />
       </Grid.Row>
     </Grid>
   )

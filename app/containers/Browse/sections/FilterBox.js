@@ -33,8 +33,8 @@ function FilterBox ({
     >
       <Menu.Item>
         <LabelStyle>Item Type</LabelStyle>
-        <Button.Group>
-          <ButtonCosplay size='large'>Cosplay</ButtonCosplay>
+        <Button.Group fluid compact>
+          <ButtonCosplay>Cosplay</ButtonCosplay>
           <Button.Or />
           <Button>Merchandise</Button>
         </Button.Group>
