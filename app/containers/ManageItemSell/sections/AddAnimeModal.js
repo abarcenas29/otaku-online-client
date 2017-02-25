@@ -25,7 +25,6 @@ function AddAnimeModal () {
     <StandardModal
       header={<p>Add Anime Title</p>}
       size='small'
-      defaultOpen
     >
       <Container>
         <div><Input fluid size='big' /></div>

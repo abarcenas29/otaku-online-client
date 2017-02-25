@@ -7,6 +7,7 @@ import {
   Grid,
   Header,
   Icon,
+  Image,
   Button
 } from 'semantic-ui-react'
 
@@ -32,9 +33,33 @@ const EmptyParagraph = css.p`
   text-align: center;
 `
 
+const PreviewContainer = css.div`
+  display: flex;
+  justify-content: center;
+`
+
+const ImageContainer = css.button`
+  background-color: transparent;
+  background-image: url('${props => props.image}')
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: ${props => props.active ? '5px solid orange' : '0'};
+
+  height: 10em;
+  margin: 1em;
+  width: 10em;
+  padding: 0.5em;
+`
+
 function SellItemFrom ({
+  dropzoneOnDrop,
+  dropzoneRef,
   handleSubmit,
-  submitItem
+  imageModalOpen,
+  primaryImageIndex,
+  submitItem,
+  uploadFiles
 }) {
   return (
     <Grid padded>
@@ -51,6 +76,9 @@ function SellItemFrom ({
               <label>Photo</label>
               <Dropzone
                 name='photos'
+                ref={dropzoneRef}
+                onDrop={dropzoneOnDrop}
+                accept='image/*'
                 style={{
                   width: '100%',
                   height: '15em',
@@ -61,10 +89,33 @@ function SellItemFrom ({
                   alignItems: 'center'
                 }}>
                 <div>
-                  <EmptyParagraph>
-                    <Icon name='image' />
-                    Drag / Click Here to Upload Your Photos (5 images max)
-                  </EmptyParagraph>
+                  {
+                    uploadFiles.files.length < 1 &&
+                    <EmptyParagraph>
+                      <Icon name='image' />
+                      Drag / Click Here to Upload Your Photos (5 images max)
+                    </EmptyParagraph>
+                  }
+                  {
+                    uploadFiles.files.length > 0 &&
+                    <PreviewContainer>
+                      {
+                        uploadFiles.files.map((image, index) => {
+                          return (
+                            <ImageContainer
+                              active={(primaryImageIndex === index)}
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                return imageModalOpen(index)
+                              }}
+                              key={index}
+                              image={image.preview}
+                              />
+                          )
+                        })
+                      }
+                    </PreviewContainer>
+                  }
                 </div>
               </Dropzone>
             </Form.Field>
